@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#
+# Build an OpenVPN plugin module on *nix.  The argument should
+# be the base name of the Cpp source file (without the .cpp).
+# This file is modified from openvpn-2.3.6 to accommodate cpp files.
+
+# This directory is where we will look for openvpn-plugin.h
+CPPFLAGS="${CPPFLAGS:--I../../..}"
+
+CC="${CC:-gcc}"
+CFLAGS="${CFLAGS:--O2 -Wall -g -lstdc++}"
+
+$CC $CPPFLAGS $CFLAGS -fPIC -c $1.cpp && \
+# $CC $CFLAGS -fPIC -shared $LDFLAGS -Wl,-soname,$1.so -o $1.so $1.o -lc
+$CC $CFLAGS -fPIC -shared $LDFLAGS -o $1.so $1.o -lc

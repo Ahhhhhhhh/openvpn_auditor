@@ -1,0 +1,7 @@
+This is a simple plugin for openvpn to audit persession usage. It records common names, external ip & port, internal ip, start & end time, and bytes in & out.
+
+It is written in C++, and has multiple levels of log verbosity. 
+
+To build, see file ./build, a modified version to accommodate C++.
+
+To use, see usage at the beginning of the file openvpn_auditor.cpp.
